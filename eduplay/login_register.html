@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register - Eduplay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('bg.png'); /* Ganti dengan jalur gambar latar Anda */
+            background-size: cover;
+            background-position: center;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Kotak form dengan latar belakang transparan */
+        .auth-container {
+            margin: 50px auto;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.7); /* Transparan */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            backdrop-filter: blur(10px); /* Efek blur di belakang form */
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: #4CAF50;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary {
+            background-color: #4CAF50;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 25px;
+            padding: 12px;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .toggle-link {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .toggle-link:hover {
+            color: #388E3C;
+        }
+
+        .auth-container form {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Animasi fade-in untuk form */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Gaya input field */
+        .form-control {
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        /* Penyesuaian untuk link toggle */
+        p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        p a {
+            color: #4CAF50;
+        }
+
+        /* Menghilangkan fokus autofill */
+        input:-webkit-autofill {
+            background-color: transparent !important;
+            color: #000 !important;
+        }
+
+        input:-webkit-autofill::first-line {
+            font-weight: normal !important;
+        }
+
+        /* Penyesuaian untuk form untuk menonaktifkan autofill */
+        form {
+            -webkit-user-select: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <h1>Selamat Datang di EduKids</h1>
+        <div id="loginForm">
+            <form action="login_process.php" method="POST" autocomplete="off">
+                <div class="mb-3">
+                    <input type="email" name="email" class="form-control" placeholder="Email" required autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <input type="password" name="password" class="form-control" placeholder="Kata Sandi" required autocomplete="off">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Masuk</button>
+            </form>
+            <p class="mt-3">Belum punya akun? <a href="#" class="toggle-link" onclick="toggleForm()">Daftar</a></p>
+        </div>
+        <div id="registerForm" style="display: none;">
+            <form action="register_process.php" method="POST" autocomplete="off">
+                <div class="mb-3">
+                    <input type="text" name="name" class="form-control" placeholder="Nama Lengkap" required autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <input type="email" name="email" class="form-control" placeholder="Email" required autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <input type="password" name="password" class="form-control" placeholder="Kata Sandi" required autocomplete="off">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Daftar</button>
+            </form>
+            <p class="mt-3">Sudah punya akun? <a href="#" class="toggle-link" onclick="toggleForm()">Masuk</a></p>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm() {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            if (loginForm.style.display === 'none') {
+                loginForm.style.display = 'block';
+                registerForm.style.display = 'none';
+            } else {
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
